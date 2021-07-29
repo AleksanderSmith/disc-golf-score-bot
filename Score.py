@@ -6,8 +6,7 @@ class Score():
       for arg in args:
         self.values.append(arg)
         self.itemCount += 1
-      
-      
+        
   def __iter__(self):
     self.i = 0
     #print(f'iter called: {self.i}')
@@ -22,13 +21,13 @@ class Score():
     else:
       raise StopIteration
   
-  def get_player_name(self):
+  def player_name(self):
     return self.values[0]
   
-  def get_total(self):
+  def total(self):
     return self.values[4]
   
-  def get_score(self):
+  def score(self):
     return self.values[5]
 
   def __str__(self) -> str:
@@ -54,5 +53,3 @@ class Score():
   
   def __eq__(self, other):
     return True if self.values[4] == other.values[4] else False
-  
-

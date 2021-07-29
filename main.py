@@ -1,12 +1,17 @@
-from openpyxl import Workbook, load_workbook
-from ScoreWatcher import ScoreWatcher
-
-
-scorefileName = "dgtour_2021_scores.xlsx"
-dropboxPath = "E:\\Dropbox\\Dropbox\\discgolf\\dg_maraton\\round-1"
-scorePath = r'E:\\dev\\python\\dg\\ScoreCardExtractor\\scorecards\\snake.csv'
-ScoreWatcher(dropboxPath).run()
-
-
-    
+from ScoreReader import ScoreReader
+from ScoreUtils import ScoreUtils
+from CourseInfo import CourseInfo
   
+# Open and read new file:
+filename = "E:\\dev\\python\\dg\\maraton\\scorecards\\snake.csv"
+reader = ScoreReader(filename)
+header, course_info, score_data = reader.read_scores()
+
+# Extract data from file
+course = CourseInfo(course_info)
+scores = sorted(ScoreUtils.Convert_data_to_score(score_data))
+
+print(scores)
+
+# Insert scores into db
+# DbHandler.Insert scores
